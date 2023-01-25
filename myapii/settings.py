@@ -1,4 +1,3 @@
-
 import os
 import datetime
 
@@ -29,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "corsheaders",
 
     #tashqi
     'rest_framework',
@@ -38,13 +36,13 @@ INSTALLED_APPS = [
     'drf_yasg',
 
 
-
     #mahalliy
     'income',
     'authenticated',
     'expenses',
     'social_auth'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,6 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "authenticated.User"
 
 
+
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
             'Bearer': {
@@ -151,7 +150,7 @@ SWAGGER_SETTINGS = {
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "https://relaxed-curie-e9a516.netlify.app",
-    "http://127.0.0.1:8080"
+    "http://127.0.0.1:8000"
 ]
 
 CORS_ORIGIN_REGEX_WHITELIST = [
@@ -168,15 +167,16 @@ REST_FRAMEWORK = {
     )
 }
 
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
-STATIC_URL = '/static/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+

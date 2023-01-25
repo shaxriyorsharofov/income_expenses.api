@@ -23,6 +23,7 @@ class FacebookSocialAuthSerializer(serializers.Serializer):
                 email=email,
                 name=name
             )
+
         except Exception as identifier:
 
             raise serializers.ValidationError(
@@ -30,11 +31,13 @@ class FacebookSocialAuthSerializer(serializers.Serializer):
             )
 
 
+
 class GoogleSocialAuthSerializer(serializers.Serializer):
     auth_token = serializers.CharField()
 
     def validate_auth_token(self, auth_token):
         user_data = google.Google.validate(auth_token)
+
         try:
             user_data['sub']
         except:
@@ -44,7 +47,7 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
 
         if user_data['aud'] != os.environ.get('GOOGLE_CLIENT_ID'):
 
-            raise AuthenticationFailed('oops, who are you?')
+            raise AuthenticationFailed('who are you?')
 
         user_id = user_data['sub']
         email = user_data['email']
@@ -73,6 +76,7 @@ class TwitterAuthSerializer(serializers.Serializer):
             email = user_info['email']
             name = user_info['name']
             provider = 'twitter'
+
         except:
             raise serializers.ValidationError(
                 'The tokens are invalid or expired. Please login again.'

@@ -13,10 +13,7 @@ class TwitterAuthTokenVerification:
     @staticmethod
     def validate_twitter_auth_tokens(access_token_key, access_token_secret):
 
-        """
-        validate_twitter_auth_tokens methods returns a twitter
-        user profile info
-        """
+
 
         consumer_api_key = os.environ.get('TWITTER_API_KEY')
         consumer_api_secret_key = os.environ.get('TWITTER_CONSUMER_SECRET')

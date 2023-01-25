@@ -10,6 +10,7 @@ class InconeList(ListCreateAPIView):
     queryset = Income.objects.all()
     serializer_class = IncomeSerializer
     permission_classes = (IsOwner, )
+    lookup_field = 'id'
 
 
     def perform_create(self, serializer):

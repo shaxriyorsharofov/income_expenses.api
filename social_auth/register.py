@@ -1,4 +1,3 @@
-
 from django.contrib.auth import authenticate
 from authenticated.models import User
 import os
